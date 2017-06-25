@@ -3,6 +3,7 @@ ActiveRecord::Schema.define do
 
   create_table :documents, :force => true do |t|
     t.string :status
+    t.boolean :active, default: false
     t.timestamps null: true
   end
 end
