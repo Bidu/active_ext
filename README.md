@@ -8,13 +8,13 @@ ActiveExt
 
 ![active_ext](https://raw.githubusercontent.com/darthjee/active_ext/main/active_ext.jpg)
 
-**Current Release**: [1.4.0](https://github.com/darthjee/active_ext/tree/1.4.0)
+**Current Release**: [2.0.0](https://github.com/darthjee/active_ext/tree/2.0.0)
 
-**Next release**: [1.5.0](https://github.com/darthjee/active_ext/compare/1.4.0...main)
+**Next release**: [2.1.0](https://github.com/darthjee/active_ext/compare/2.0.0...main)
 
 Yard Documentation
 -------------------
-[https://www.rubydoc.info/gems/darthjee-active_ext/1.4.0](https://www.rubydoc.info/gems/darthjee-active_ext/1.4.0)
+[https://www.rubydoc.info/gems/darthjee-active_ext/2.0.0](https://www.rubydoc.info/gems/darthjee-active_ext/2.0.0)
 
 
 # Usage

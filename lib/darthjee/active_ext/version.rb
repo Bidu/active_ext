@@ -2,6 +2,6 @@
 
 module Darthjee
   module ActiveExt
-    VERSION = '1.4.0'
+    VERSION = '2.0.0'
   end
 end
