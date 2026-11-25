@@ -10,13 +10,8 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - coverage-final:
-          requires: [test]
-          filters:
-            tags:
-              only: /.*/
       - build-and-release:
-          requires: [test, checks, coverage-final]
+          requires: [test, checks]
           filters:
             tags:
               only: /\d+\.\d+\.\d+/
@@ -36,17 +31,10 @@ jobs:
           command: bundle install
       - run:
           name: RSpec
-          command: CI=true bundle exec rspec
+          command: bundle exec rspec
       - run:
-          name: Upload coverage to Codacy (partial)
-          command: bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -r coverage/lcov/project.lcov
-  coverage-final:
-    docker:
-      - image: darthjee/circleci_rails_gems:3.0.0
-    steps:
-      - run:
-          name: Finalize coverage on Codacy
-          command: bash <(curl -Ls https://coverage.codacy.com/get.sh) final
+          name: Upload coverage to Codacy
+          command: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/lcov/project.lcov
   checks:
     docker:
       - image: darthjee/circleci_rails_gems:3.0.0
@@ -65,7 +53,7 @@ jobs:
           command: bundle exec rake verify_measurements
       - run:
           name: Check version documentation
-          command: VERSION_PATH=lib/darthjee/active_ext/version.rb GEM_NAME=darthjee-active_ext check_readme.sh
+          command: PROJECT=darthjee-active_ext check_readme.sh
       - run:
           name: Rubycritcs check
           command: rubycritic.sh
@@ -87,7 +75,7 @@ jobs:
           command: build_gem.sh signin
       - run:
           name: Build Gem
-          command: build_gem.sh build
+          command: PROJECT=darthjee-active_ext build_gem.sh build
       - run:
           name: Push Gem
-          command: build_gem.sh push
+          command: PROJECT=darthjee-active_ext build_gem.sh push
